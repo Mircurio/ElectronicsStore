@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    # ddl-auto уже задан через переменную окружения в docker-compose (update)
+
+  datasource:
+    # URL, username и password подтянутся из переменных окружения docker-compose
+    driver-class-name: org.postgresql.Driver

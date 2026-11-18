@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U shopuser -d shopdb"]
       interval: 10s
@@ -35,16 +35,16 @@ services:
       db:
         condition: service_healthy
 
-  # ---------- Фронтенд (React + Nginx) ----------
-  frontend:
-    build:
-      context: ./Frontend
-      dockerfile: Dockerfile
-    container_name: shop-frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
+#  # (React + Nginx)
+#  frontend:
+#    build:
+#      context: ./Frontend
+#      dockerfile: Dockerfile
+#    container_name: shop-frontend
+#    ports:
+#      - "3000:80"
+#    depends_on:
+#      - backend
 
 volumes:
   pgdata:
